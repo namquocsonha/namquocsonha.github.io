@@ -1,0 +1,513 @@
+/* resert CSS  */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    scroll-behavior:smooth;
+}
+
+/* commom */
+    .w3-row {
+        margin-left: -8px;
+        margin-right: -8px;
+        /* 
+        overflow: hidden; đã thêm vào class ngang cấp contact-list 
+        chưa tìm hiểu kỹ overflow đã bao đc col vì clear ko được ^^ */
+    }
+
+    .w3-row::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    
+    .w3-col {
+        float: left;
+        padding: 0 8px;
+    }
+
+    .w3-col-full {
+        width: 100%;
+    }
+
+    .w3-col-hafl {
+        width: 50%;
+    }
+
+    .w3-col-third {
+        width: 33.33333%;
+    }
+
+    .w3-mt-8 {
+        margin-top: 8px;
+    }
+
+    .w3-mt-16 {
+        margin-top: 16px;
+    }
+    
+    .w3-mt-32 {
+        margin-top: 32px;
+    }
+
+    .w3-clear {
+        clear: both;
+    }
+
+    .w3-wide {
+        letter-spacing: 4px; /*khoảng cách giữa các chữ chiều ngang*/
+    }
+
+    .w3-center {
+        text-align: center !important;
+    }
+
+    .w3-opacity {
+        opacity: 0.6;
+    }
+
+    .w3-text-white {
+        color: #fff;
+    }
+
+    .w3-pull-right {
+        float: right;
+    }
+
+    h1 , h2 ,h3, h4, h5, h6 {
+        font-weight: 400; /* giảm độ dày chữ */
+    }
+
+    h2 {
+        font-size: 30px; /* tạo font-size riêng cho h2 */
+    }
+
+    h3 {
+        font-size: 24px; /* tạo font-size riêng cho h3 */
+    }
+
+    .btn {
+        border: none;
+        background-color: #000;
+        padding: 12px 20px;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    
+    .btn:hover {
+        cursor: pointer;
+        background-color: #ccc;
+        color: #000;
+        /* nếu class w3-text-white : !important
+         là ko đổi màu chữ khi hover đâu @@  */
+    }
+    /* open js */
+    
+#header {
+    height: 46px;
+    background-color: black;
+    position: fixed;
+    top: 0;  /* do có fixed nên fix  lại kích thước */
+    left: 0;
+    right: 0;
+    z-index: 1; /* ưu tiên độ sâu  */
+}
+
+#header .nav {
+    
+    display: inline-block; /* để chỗ cho search lên  */
+    position: relative;
+}
+
+#header .nav li {
+    display: inline-block; 
+    position: relative;  /* xét vị trí tương đối vs subnav*/
+}
+
+/* Css riêng thẻ cha chứa a  (chứa > là chỉ áp dụng cấp con ngay dưới nó )*/
+.nav > li > a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.nav li:hover .subnav {
+    display: block;
+}
+
+.nav > li:hover > a,
+.nav .subnav li:hover a {
+    color: #000;
+    background-color: #ccc;
+}
+
+.nav li a {
+    line-height: 46.5px;
+    padding: 0 24px;
+    text-decoration: none;
+    display: inline-block;  /* bao li */
+}
+
+ /* chú ý: icon không nên color bởi khi hover nó sẽ không đổi màu  */
+.nav .icon-more {
+    font-size: 12px;
+}
+
+.nav .subnav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.nav .subnav li {
+    min-width: 160px; 
+}
+
+.nav .subnav a {
+    width: 100%;  /* cho bao hết width của li ~ hover */
+    color: #000;
+    line-height: 38px;
+    padding-left: 16px;
+}
+
+.header-search:hover {
+    background-color: #f44336;
+    cursor: pointer;
+}
+
+.header-search {
+    display: inline;
+    float: right;
+    color: #fff;
+    line-height: 46px;
+    padding: 0 24px;
+}
+
+.mobile-menu-bar:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+.mobile-menu-bar {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    float: right;
+    color: #fff;
+    line-height: 46px;
+    padding: 0 24px;
+}
+
+.nav .nav-btn {
+    line-height: 46px;
+    border: none;
+    text-transform: uppercase;
+    padding: 0 24px;
+}
+
+/* End: Header  */
+
+/* slider  */
+#slider {
+    position: relative;
+    padding-top: 50%;  
+    /* mẹo lấy một nửa chiều rộng */
+    margin-top: 46px; 
+    /* cách top bởi header có thuôc tính position:fixed */
+    background: url(../img/slider/la.jpg) top center / cover no-repeat;
+    
+    /*  Trên là gộp thuộc tính riêng ra sẽ là: 
+        background positive: top center
+        background-size: cover
+        background-repeat: no-repeat;
+    */
+}
+
+#slider .text-content {
+    position: absolute;
+    bottom: 46px;
+    width: 100%;
+    text-align: center; /* có cái này thì width 100% mới run */
+    color: #fff;
+}
+
+
+#slider .text-content .text-heading {
+    text-shadow: 0 0 6px #000;
+}
+
+#slider .text-content .text-description {
+    text-shadow: 0 0 6px #000;
+    margin-top: 25px;
+}
+
+/* content  */
+
+.content-section {
+    padding: 64px 16px 112px;
+    width: 800px;
+    max-width: 100%;
+    margin-left: auto; /*  tip cân ra giữa  */
+    margin-right: auto;
+}
+
+.section-sub-heading {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.about-text {
+    line-height: 1.5;
+    text-align: justify;
+}
+
+#content .member-list {
+    margin-top: 47px;
+}
+
+#content .member-iteam {
+    display: block; 
+    /* display để chỉnh width img bê ntrong */
+    /* vẫn ko hiểu đã pađing 51 vào 2 bên để làm gì 
+    và khi xóa đã cho đc img member width : 60% ^^*/
+}
+
+#content .member-name {
+    margin: 15px 0px ;
+}
+
+/* note: img max 147 , trang template 154px @@*/
+#content .member-avatar {
+    width: 60%;
+    border-radius: 4px;
+}
+
+/* tour section  */
+
+.tour-section {
+    background-color: #000;
+}
+
+#content .tickes-list {
+    background-color: #fff;
+    border: 1px solid #ccc; /* suýt quên nhìn kỹ mới thấy^^ */
+}
+
+#content .tickes-list li {
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd;
+    color: #757575;
+    list-style-type: none;
+}
+
+#content .tour-sold-out {
+    padding: 3px 8px;
+    background-color: #f44336;
+    margin-left: 16px;
+}
+
+#content .tour-quantity {
+    float: right;
+    padding: 4px 8px;
+    background-color: #000;
+    border-radius: 50%;
+    margin-top: -2px; 
+    /* tại sao đặt margin-top bởi vì:
+    chiều cao li không đủ chứa nên nó xẽ đẩy xuống*/
+}
+
+.places-list {
+    margin-top: 32px;
+}
+
+#content .places-img {
+    width: 100%; /* kế thừa width thẻ chứa nó */
+    display: block; 
+    /* mặc định img là inline block nên sẽ hở phần dưới */
+}
+
+#content .places-img:hover {
+    opacity: 0.6;
+}
+
+#content .places-content {
+    background-color: #fff;
+    padding: 16px;
+}
+
+/* contact  */
+
+#content .contact-list {
+    padding-top:32px ; /* 2 margin chạm nhau là lấn nhau ??? */
+}
+
+#content .contact-info {
+    font-size: 18px;
+    line-height: 1.4; 
+    /* tính cho line-height vaò thể html nhưng sợ ảnh hưởng chiều dài items */
+}
+
+#content .contact-info-icon {
+    display: inline-block;
+    width: 30px;/* ko margin right vì nhiều icon kích thước khác nhau có thể đẩy lệch */
+}
+
+#content .contact-info a:hover {
+    opacity: 1;
+}
+
+#content .contact-info a {
+    opacity: 0.8;
+}
+
+#content .form-control {
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+/* map  */
+#content .map-section img {
+    width: 100%;
+    filter: grayscale(50%);
+}
+
+#footer {
+    text-align: center;
+    padding: 64px 16px;
+} 
+
+#footer .socials-list {
+    font-size: 24px;
+}
+
+#footer .socials-list a {
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+}
+#footer .socials-list a:hover  {
+    opacity: 0.4;
+}
+
+#footer .copy-right {
+    margin: 15px 0;
+    color: rgba(0,0,0,0.6);
+}
+
+#footer .copy-right a {
+    color: rgba(0,0,0,0.6);
+}
+
+/* modal  */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* common */
+.open {
+    display: flex; 
+    /* xếp lên trước class modal là không được ưu tiên nhé ! */
+}
+
+.modal-container {
+    position: relative;
+    background-color: #fff;
+    width: 900px;
+    max-width: calc(100% - 64px); /* dùng để responsive hoặc có thể margin 2 bên  */
+    min-height: 300px;
+    animation: modalFaceIn ease  .5s ; /* vì có keyframe */
+}
+
+/* vẫn chưa hiểu ko dùng dung .btn bên trên đc */
+.modal-btn:hover,
+.modal-close:hover {
+    cursor: pointer;
+    background-color: #ccc;
+    color: #000;
+}
+
+.modal-close {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    display: block;
+    padding: 17px 16px;
+}
+
+.modal-header {
+    display: flex;
+    background-color: #009688;
+    height: 129px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+}
+
+.modal-header i {
+    margin-right: 16px;
+}
+
+.modal-body {
+    margin: 16px;
+}
+
+.modal-input {
+    font-size: 14px;
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+ 
+.modal-btn {
+    font-size: 15px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 19px;
+    border: none;
+    background-color:#009688;
+    color: #fff;
+}
+
+.modal-help {
+    float: right;
+    margin: 16px 0 32px;
+}
+
+.modal-help a {
+    color: #2196F3;
+    padding: 12px 0;
+}
+
+/* chuyển động mượt cho modal */
+@keyframes modalFaceIn {
+    from {
+        opacity: 0;
+        transform: translateY(-130px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
